@@ -140,6 +140,35 @@ static NSString * const serviceName = @"im.zorro.ipsec_demo.vpn_config"; //钥�
     }
 }
 
+#pragma mark - ZT设置IKEv2协议
+- (void)getAnIKEv2Protocol
+{
+    NEVPNProtocolIKEv2 *p = [[NEVPNProtocolIKEv2 alloc]init];
+    p.username = @"no account";
+    p.serverAddress = @"haven't found a server yet";
+//    p.passwordReference = [self searchKeychainCopyMatching:VPN_PwdIdentifier];
+    NSString *password = @"not yet";
+    p.passwordReference = [password dataUsingEncoding:NSUTF8StringEncoding];
+    p.authenticationMethod = NEVPNIKEAuthenticationMethodSharedSecret;
+    p.sharedSecretReference = nil;
+    p.useExtendedAuthentication=YES;
+    p.disconnectOnSleep = NO;
+    
+    _vpnManager.protocol = p;
+    _vpnManager.onDemandEnabled = NO;
+    _vpnManager.localizedDescription = @"IKEv2 Test One";
+    
+    [_vpnManager saveToPreferencesWithCompletionHandler:^(NSError *error) {
+        if(error) {
+            [NSString stringWithFormat:@"Save config failed [%@]", error.localizedDescription];
+        }
+        else {
+           
+        }
+    }];
+
+    
+}
 
 #pragma mark -
 #pragma mark - 自动重连 BEGIN

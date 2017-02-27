@@ -28,6 +28,12 @@
     [vpnBtn addTarget:self action:@selector(vpnBtnTapped:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:vpnBtn];
     
+    UIButton *testBtn = [UIButton new];
+    testBtn.frame = CGRectMake(CGRectGetMinX(vpnBtn.frame), CGRectGetMaxY(vpnBtn.frame), 150, 33);
+    testBtn.backgroundColor = [UIColor cyanColor];
+    [testBtn setTitle:@"learningBtn" forState:UIControlStateNormal];
+    [testBtn addTarget:self action:@selector(clickTestBtn:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:testBtn];
     
     
     
@@ -60,6 +66,26 @@
 //    }
     
 }
+
+
+- (void)clickTestBtn:(id)sender
+{
+//    NEVPNManager *manager = [NEVPNManager sharedManager];
+//    [manager loadFromPreferencesWithCompletionHandler:^(NSError * _Nullable error) {
+//        if (error) {
+//            NSLog(@"load er - %@",error);
+//        }else{
+//            NEVPNProtocolIKEv2 *IKEv2Protocol = [[NEVPNProtocolIKEv2 alloc]init];
+//            IKEv2Protocol.username = @"MyUserName";
+//            IKEv2Protocol.passwordReference = 
+//
+//            
+//        }
+//    }];
+}
+
+
+
 
 -(void)vpnBtnTapped:(id)sender {
     
